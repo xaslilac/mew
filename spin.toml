@@ -1,0 +1,16 @@
+spin_manifest_version = "1"
+authors = ["McKayla Washburn <mckayla@hey.com>"]
+description = ""
+name = "mew"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "mew"
+source = "./build/mew.wasm"
+allowed_http_hosts = []
+[component.trigger]
+route = "/..."
+executor = { type = "wagi" }
+[component.build]
+command = "zig cc -target wasm32-wasi -O3 ./main.c -o ./build/mew.wasm"
